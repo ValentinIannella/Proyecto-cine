@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "titulo": "Inception",
+    "genero": "Sci-Fi",
+    "anio": 2010,
+    "descripcion": "Un ladrón especializado en robar secretos del subconsciente tiene la oportunidad de redimirse realizando una tarea inversa: implantar una idea en la mente de una persona. A través de sueños dentro de sueños, el equipo se enfrenta a desafíos cada vez más complejos. La línea entre la realidad y la ilusión se vuelve difusa. El protagonista debe lidiar con su pasado mientras intenta completar la misión. Es una historia de acción, ciencia ficción y profundidad psicológica."
+  },
+  {
+    "id": 2,
+    "titulo": "Titanic",
+    "genero": "Romance",
+    "anio": 1997,
+    "descripcion": "Una joven de clase alta y un artista humilde se conocen a bordo del famoso transatlántico Titanic. A pesar de sus diferencias sociales, surge una historia de amor intensa y prohibida. El viaje se convierte en tragedia cuando el barco choca contra un iceberg. Ambos deberán enfrentar decisiones difíciles para sobrevivir. Es una mezcla de romance, drama y una de las tragedias más recordadas de la historia."
+  },
+  {
+    "id": 3,
+    "titulo": "Interstellar",
+    "genero": "Sci-Fi",
+    "anio": 2014,
+    "descripcion": "En un futuro donde la Tierra enfrenta una crisis ambiental, un grupo de astronautas emprende una misión para encontrar un nuevo hogar para la humanidad. A través de agujeros de gusano y planetas desconocidos, el tiempo y el espacio se comportan de formas inesperadas. El protagonista lucha entre su deber como explorador y su amor por su familia. La historia combina ciencia, emoción y supervivencia. Es una reflexión sobre el tiempo, el sacrificio y la esperanza."
+  }
+]

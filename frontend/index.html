@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css?v=1" rel="stylesheet"> 
+    <title>Proyecto Adistec</title>
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 Películas</h1>
+
+    <div class="busqueda-wrap">
+      <input type="text" id="busqueda" placeholder="Buscar película...">
+      <button type="button" onclick="buscar()">Buscar</button>
+      <button type="button" onclick="cargar()">Mostrar todas</button>
+    </div>
+
+    <p id="mensaje" class="mensaje"></p>
+
+    <ul id="lista"></ul>
+  </div>
+
+  <script>
+async function cargar() {
+  const res = await fetch('http://localhost:3000/peliculas');
+  const data = await res.json();
+  mostrar(data);
+}
+
+async function buscar() {
+  const texto = document.getElementById('busqueda').value;
+
+  const res = await fetch(`http://localhost:3000/peliculas/buscar?titulo=${encodeURIComponent(texto)}`);
+  const data = await res.json();
+  mostrar(data);
+}
+
+// Las películas se cargan solo cuando el usuario hace clic en "Mostrar todas" o "Buscar"
+
+function mostrar(peliculas) {
+  const lista = document.getElementById('lista');
+  const mensaje = document.getElementById('mensaje');
+  lista.innerHTML = '';
+  mensaje.textContent = '';
+
+  if (!peliculas || peliculas.length === 0) {
+    mensaje.textContent = 'La película no existe';
+    return;
+  }
+
+  peliculas.forEach(p => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div class="titulo-wrap">
+        <strong>${p.titulo}</strong>
+        <span class="anio">(${p.anio})</span>
+      </div>
+      <p class="detalles">${p.genero}</p>
+      <p class="descripcion">${p.descripcion || ''}</p>
+    `;
+    lista.appendChild(li);
+  });
+}
+</script>
+    
+</body>
+</html>
