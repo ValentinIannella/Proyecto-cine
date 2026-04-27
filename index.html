@@ -14,7 +14,8 @@
       <input type="text" id="busqueda" placeholder="Buscar película...">
       <button type="button" onclick="buscar()">Buscar</button>
       <button type="button" onclick="cargar()">Mostrar todas</button>
-    </div>
+      <button type="button" onclick="cargarExternas()">Ver series de TVMaze</button>
+      </div>
 
     <p id="mensaje" class="mensaje"></p>
 
@@ -61,6 +62,32 @@ function mostrar(peliculas) {
     `;
     lista.appendChild(li);
   });
+}
+
+async function cargarExternas() {
+  try {
+    const res = await fetch('http://localhost:3000/peliculas/externa');
+    const data = await res.json();
+    const lista = document.getElementById('lista');
+    const mensaje = document.getElementById('mensaje');
+    lista.innerHTML = '';
+    mensaje.textContent = '';
+
+    data.forEach(serie => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <div class="titulo-wrap">
+          <strong>${serie.name}</strong>
+          <span class="anio">(${serie.premiered ? serie.premiered.slice(0, 4) : 'N/A'})</span>
+        </div>
+        <p class="detalles">${serie.genres ? serie.genres.join(', ') : 'Sin género'}</p>
+        <p class="descripcion">${serie.summary ? serie.summary.replace(/<[^>]+>/g, '') : ''}</p>
+      `;
+      lista.appendChild(li);
+    });
+  } catch (err) {
+    document.getElementById('mensaje').textContent = 'Error al conectar con TVMaze.';
+  }
 }
 </script>
     
